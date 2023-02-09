@@ -8,7 +8,7 @@
 
 © Copyright 2022, Intel Corporation
 
-## Module name
+## GCP GKE Module
 
 ## Usage
 
