@@ -51,7 +51,7 @@ Resource type: google_container_cluster
 Parameter: min_cpu_platform
 
 Allowed Types
-- Intel Xeon 2nd Generation (code-named Cascade Lake), Intel Xeon 3rd Generation (code-named Ice Lake), Intel Xeon 4th Generation (code-named Sapphire Rapids)
+- Intel Cascade Lake, Intel Ice Lake, Intel Sapphire Rapids
 
 ## Links
 https://cloud.google.com/compute/docs/cpu-platforms
