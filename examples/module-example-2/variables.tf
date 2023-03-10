@@ -14,35 +14,53 @@
  * limitations under the License.
  */
 
-+6riable "project_id" {
-  default = "intel-csa-resource-gcp"
+variable "project_id" {
+  description = "The project ID to host the cluster in"
+  default     = "intel-csa-resource-gcp"
 }
 
 variable "cluster_name_suffix" {
   description = "A suffix to append to the default cluster name"
-  default     = ""
+  default     = "-1"
 }
 
 variable "region" {
   description = "The region to host the cluster in"
+  default     = "us-east1"
 }
 
 variable "network" {
   description = "The VPC network to host the cluster in"
+  default     = "default"
 }
 
 variable "subnetwork" {
   description = "The subnetwork to host the cluster in"
+  default     = "default"
 }
 
 variable "ip_range_pods" {
   description = "The secondary ip range to use for pods"
+  default     = "k8s-pods"
 }
 
 variable "ip_range_services" {
   description = "The secondary ip range to use for services"
+  default     = "k8s-services"
 }
 
 variable "compute_engine_service_account" {
-  default = "551221341017-compute@developer.gserviceaccount.com"
-  }
+  description = "Service account to associate to the nodes in the cluster"
+  default     = "551221341017-compute@developer.gserviceaccount.com"
+}
+
+variable "skip_provisioners" {
+  type        = bool
+  description = "Flag to skip local-exec provisioners"
+  default     = false
+}
+
+variable "enable_binary_authorization" {
+  description = "Enable BinAuthZ Admission controller"
+  default     = false
+}
