@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-+6riable "project_id" {
+variable "project_id" {
   default = "intel-csa-resource-gcp"
 }
 
