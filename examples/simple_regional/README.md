@@ -10,46 +10,9 @@
 
 This example illustrates how to create a simple regional cluster.  
 
-## Usage
+## Usage 
 
-**See examples folder for complete example.**
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| cluster\_name\_suffix | A suffix to append to the default cluster name | `string` | `""` | no |
-| compute\_engine\_service\_account | Service account to associate to the nodes in the cluster | `any` | n/a | yes |
-| enable\_binary\_authorization | Enable BinAuthZ Admission controller | `bool` | `false` | no |
-| ip\_range\_pods | The secondary ip range to use for pods | `any` | n/a | yes |
-| ip\_range\_services | The secondary ip range to use for services | `any` | n/a | yes |
-| network | The VPC network to host the cluster in | `any` | n/a | yes |
-| project\_id | The project ID to host the cluster in | `any` | n/a | yes |
-| region | The region to host the cluster in | `any` | n/a | yes |
-| skip\_provisioners | Flag to skip local-exec provisioners | `bool` | `false` | no |
-| subnetwork | The subnetwork to host the cluster in | `any` | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| ca\_certificate | n/a |
-| client\_token | n/a |
-| cluster\_name | Cluster name |
-| ip\_range\_pods | The secondary IP range used for pods |
-| ip\_range\_services | The secondary IP range used for services |
-| kubernetes\_endpoint | n/a |
-| location | n/a |
-| master\_kubernetes\_version | The master Kubernetes version |
-| network | n/a |
-| project\_id | n/a |
-| region | n/a |
-| service\_account | The default service account used for running nodes. |
-| subnetwork | n/a |
-| zones | List of zones in which the cluster resides |
-
-
-main.tf
+The simple usage is as follows: 
 ```hcl
 locals {
   cluster_type = "simple-regional"
@@ -97,7 +60,7 @@ module "gke" {
   ] 
 }
 
-```hcl
+```
 
 To provision this example, run the following from within this directory:
 - `terraform init` to get the plugins
@@ -106,6 +69,40 @@ To provision this example, run the following from within this directory:
 - `terraform destroy` to destroy the built infrastructure
 
 ```
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| cluster\_name\_suffix | A suffix to append to the default cluster name | `string` | `""` | no |
+| compute\_engine\_service\_account | Service account to associate to the nodes in the cluster | `any` | n/a | yes |
+| enable\_binary\_authorization | Enable BinAuthZ Admission controller | `bool` | `false` | no |
+| ip\_range\_pods | The secondary ip range to use for pods | `any` | n/a | yes |
+| ip\_range\_services | The secondary ip range to use for services | `any` | n/a | yes |
+| network | The VPC network to host the cluster in | `any` | n/a | yes |
+| project\_id | The project ID to host the cluster in | `any` | n/a | yes |
+| region | The region to host the cluster in | `any` | n/a | yes |
+| skip\_provisioners | Flag to skip local-exec provisioners | `bool` | `false` | no |
+| subnetwork | The subnetwork to host the cluster in | `any` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| ca\_certificate | n/a |
+| client\_token | n/a |
+| cluster\_name | Cluster name |
+| ip\_range\_pods | The secondary IP range used for pods |
+| ip\_range\_services | The secondary IP range used for services |
+| kubernetes\_endpoint | n/a |
+| location | n/a |
+| master\_kubernetes\_version | The master Kubernetes version |
+| network | n/a |
+| project\_id | n/a |
+| region | n/a |
+| service\_account | The default service account used for running nodes. |
+| subnetwork | n/a |
+| zones | List of zones in which the cluster resides |
 
 ## Considerations
 Under the locals block, you will need to update the following inputs: 
