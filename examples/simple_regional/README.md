@@ -68,7 +68,7 @@ To provision this example, run the following from within this directory:
 - `terraform apply` to apply the infrastructure build
 - `terraform destroy` to destroy the built infrastructure
 
-```
+
 
 ## Inputs
 
