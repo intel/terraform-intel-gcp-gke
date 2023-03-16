@@ -52,7 +52,15 @@ module "gke" {
   enable_binary_authorization = local.enable_binary_authorization
   skip_provisioners           = local.skip_provisioners
 
+# See policies.md, we recommend any of the following Intel Xeon 3rd Generation Scalable processors (code-named Ice Lake) 
+# General Purpose: n2-standard-2, n2-standard-4, n2-standard-8, n2-standard-16, n2-standard-32, n2-standard-48, n2-standard-64, n2-standard-80, n2-standard-96, n2-standard-128
+# General Purpose: n2-highmem-2, n2-highmem-4, n2-highmem-8, n2-highmem-16, n2-highmem-32, n2-highmem-48, n2-highmem-64, n2-highmem-80, n2-highmem-96, n2-highmem-128
+# General Purpose: n2-highcpu-2, n2-highcpu-4, n2-highcpu-8, n2-highcpu-16, n2-highcpu-32, n2-highcpu-48, n2-highcpu-64, n2-highcpu-80, n2-highcpu-96
+# Compute Optimized: c2-standard-4, c2-standard-8, c2-standard-16, c2-standard-30, c2-standard-60, c3-highcpu-4, c3-highcpu-8, c3-highcpu-22, c3-highcpu-44, c3-highcpu-88, c3-highcpu-176
+# Memory Optimized: m3-ultramem-32, m3-ultramem-64, m3-ultramem-128, m3-megamem-64, m3-megamem-128
+
   node_pools = [
+    # See recommended instance types for Intel Xeon 3rd Generation Scalable processors (code-named Ice Lake) above
     {
       name = "my-pool"
       machine_type = "n2-standard-8"
