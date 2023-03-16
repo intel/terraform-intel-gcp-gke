@@ -55,7 +55,7 @@ module "gke" {
   node_pools = [
     {
       name = "my-pool"
-      machine_type = "n2-standard-48"
+      machine_type = "n2-standard-8"
     }
   ] 
 }
