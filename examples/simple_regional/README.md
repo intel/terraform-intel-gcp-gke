@@ -8,7 +8,9 @@
 
 ## Intel GCP GKE Simple Regional Example
 
-This example illustrates how to create a simple regional kubernetes cluster within GCP. The cluster is created on Intel 3rd gen Xeon Scalable processor called Icelake. At the time of publication of this example, Intel's 4th gen Xeon Scalable processor is not globally available in GCP. It is available in public preview. Hence this example uses Icelake based GCE instances to create the cluster. Once Saphhire Rapids is globally available in GCP, the GKE cluster can be created based on Sapphire Rapids based GCE instances.
+This example illustrates how to create a simple regional GKE kubernetes cluster within GCP. The cluster is created on Intel 4th gen Xeon Scalable processor called Sapphire Rapids. At the time of publication of this example, Intel's 4th gen Xeon Scalable processor is not globally available in GCP. It is available in public preview. Hence this example used the region us-central1 and availability zones us-central1-a, us-central1-b, and us-central1-c, where we confirmed with Google support team that C3-Highcpu-4 instances are available during public preview for our GCP project. 
+
+Once Saphhire Rapids is globally available in GCP, the GKE cluster can be created based on Sapphire Rapids based GCE instances in all regions where this new instance type will be available.
 
 ## Usage 
 
@@ -31,17 +33,36 @@ The simple usage is as follows:
 
 locals {
   cluster_type                   = "simple-regional"
+
+# Update the project id that is specific to your own GCP environment
+# project_id                     = "your_own_gcp_project_id"
   project_id                     = "intel-csa-resource-gcp"
+
   cluster_name_suffix            = "-1"
-  region                         = "us-east1"
+  region                         = "us-central1"
+  node_locations                 = ["us-central1-a","us-central1-b","us-central1-c"]
   network                        = "default"
   subnetwork                     = "default"
-  ip_range_pods                  = "k8s-pods"
-  ip_range_services              = "k8s-services"
+
+# For the selected network and subnetwork, there needs to exist secondary IP ranges for pods and a different secondary IP range for services. Make sure that these secondary
+# IP ranges are setup in your network and remember to use the associated names of these IP ranges for ip_range_pods and ip_range_services defined below. In our example,
+# we are caling these secondary ranges as k8s-pods and k8s-services
+  ip_range_pods                  = "k8s-pods"       # replace with your own ip_range_pods value
+  ip_range_services              = "k8s-services"   # replace with your own ip_range_services value
+
+# Update the compute engine service account with your own compute engine service account
+# compute_engine_service_account = "123456789012-compute@developer.gserviceaccount.com"
   compute_engine_service_account = "551221341017-compute@developer.gserviceaccount.com"
+
   enable_binary_authorization    = false
   skip_provisioners              = false
-  machine_type                   = "n2-standard-4"
+
+# Machine type is selected as Intel 4th gen Xeon Scalable processor called Sapphire Rapids
+  machine_type                   = "c3-highcpu-4"
+
+#Auto scaling configurations, min_node_count is the minimum node count per zone, max_node_count is the max node count per zone
+  min_node_count                 = 1
+  max_node_count                 = 3
 }
 
 data "google_client_config" "default" {}
@@ -60,21 +81,27 @@ module "gke" {
   region                      = local.region
   network                     = local.network
   subnetwork                  = local.subnetwork
+
   ip_range_pods               = local.ip_range_pods
   ip_range_services           = local.ip_range_services
+
   create_service_account      = false
   service_account             = local.compute_engine_service_account
+
   enable_cost_allocation      = true
   enable_binary_authorization = local.enable_binary_authorization
   skip_provisioners           = local.skip_provisioners
+
   remove_default_node_pool    = true
 
 
   node_pools = [
     # See recommended instance types for Intel Xeon 4th Generation Scalable processors (code-named Sapphire Rapids) above
     {
-      name         = "my-pool"
-      machine_type = local.machine_type
+      name                 = "my-pool"
+      machine_type         = local.machine_type
+      min_node_count       = local.min_node_count
+      max_node_count       = local.max_node_count
     }
   ]
 }
@@ -129,5 +156,6 @@ Under the locals block, you will need to update the following inputs:
 - ip_range_services: replace "k8s-services" with the secondary ip range you want to use for your services
 - network: currently set to default but you can replace it to the VPC network you want to host the cluster in 
 - subnetwork: currently set to default but you can replace it to the subnetwork you want to host the cluster in 
-- region: replace "us-east1" with the region you want to host the cluster in 
+- region: replace "us-central1" with the region you want to host the cluster in 
+- node_locations: update the availability zones for your node locations in your GKE cluster based on the region and availability zones of your environment
 - computer_engine_service_account: replace the service account with your service account to associate to the nodes in the cluster
