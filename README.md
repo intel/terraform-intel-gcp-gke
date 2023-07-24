@@ -125,3 +125,29 @@ Under the locals block, you will need to update the following inputs:
 - region: replace "us-central1" with the region you want to host the cluster in 
 - node_locations: update the availability zones for your node locations in your GKE cluster based on the region and availability zones of your environment
 - computer_engine_service_account: replace the service account with your service account to associate to the nodes in the cluster
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+No requirements.
+
+## Providers
+
+No providers.
+
+## Modules
+
+No modules.
+
+## Resources
+
+No resources.
+
+## Inputs
+
+No inputs.
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
