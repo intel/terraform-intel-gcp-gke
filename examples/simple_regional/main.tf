@@ -9,8 +9,7 @@
 #                   n2-highmem-80, n2-highmem-96, n2-highmem-128
 # General Purpose:  n2-highcpu-2, n2-highcpu-4, n2-highcpu-8, n2-highcpu-16, n2-highcpu-32, n2-highcpu-48, n2-highcpu-64,
 #                   n2-highcpu-80, n2-highcpu-96
-# Compute Optimized: c2-standard-4, c2-standard-8, c2-standard-16, c2-standard-30, c2-standard-60, c3-highcpu-4, c3-highcpu-8,
-#                    c3-highcpu-22, c3-highcpu-44, c3-highcpu-88, c3-highcpu-176
+# Compute Optimized: c3-highcpu-4, c3-highcpu-8, c3-highcpu-22, c3-highcpu-44, c3-highcpu-88, c3-highcpu-176
 #Memory Optimized:   m3-ultramem-32, m3-ultramem-64, m3-ultramem-128, m3-megamem-64, m3-megamem-128
 
 locals {
