@@ -131,29 +131,4 @@ Under the locals block, you will need to update the following inputs:
 =======
 - region: replace "us-east1" with the region you want to host the cluster in 
 - computer_engine_service_account: replace the service account with your service account to associate to the nodes in the cluster
-<!-- BEGIN_TF_DOCS -->
-## Requirements
 
-No requirements.
-
-## Providers
-
-No providers.
-
-## Modules
-
-No modules.
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
-<!-- END_TF_DOCS -->
->>>>>>> 54715507bc115126b102ee4e7200adb4184b926e
