@@ -8,9 +8,7 @@
 
 ## Intel GCP GKE Simple Regional Example
 
-This example illustrates how to create a simple regional GKE kubernetes cluster within GCP. The cluster is created on Intel 4th gen Xeon Scalable processor called Sapphire Rapids. At the time of publication of this example, Intel's 4th gen Xeon Scalable processor is not globally available in GCP. It is available in public preview. Hence this example used the region us-central1 and availability zones us-central1-a, us-central1-b, and us-central1-c, where we confirmed with Google support team that C3-Highcpu-4 instances are available during public preview for our GCP project. 
-
-Once Saphhire Rapids is globally available in GCP, the GKE cluster can be created based on Sapphire Rapids based GCE instances in all regions where this new instance type will be available.
+This example illustrates how to create a simple regional GKE kubernetes cluster within GCP. The cluster is created on Intel 4th gen Xeon Scalable processor called Sapphire Rapids.
 
 ## Usage 
 
@@ -27,7 +25,7 @@ The simple usage is as follows:
 #                   n2-highmem-80, n2-highmem-96, n2-highmem-128
 # General Purpose:  n2-highcpu-2, n2-highcpu-4, n2-highcpu-8, n2-highcpu-16, n2-highcpu-32, n2-highcpu-48, n2-highcpu-64,
 #                   n2-highcpu-80, n2-highcpu-96
-# Compute Optimized: c2-standard-4, c2-standard-8, c2-standard-16, c2-standard-30, c2-standard-60, c3-highcpu-4, c3-highcpu-8,
+# Compute Optimized: c3-highcpu-4, c3-highcpu-8,
 #                    c3-highcpu-22, c3-highcpu-44, c3-highcpu-88, c3-highcpu-176
 #Memory Optimized:   m3-ultramem-32, m3-ultramem-64, m3-ultramem-128, m3-megamem-64, m3-megamem-128
 
