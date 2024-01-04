@@ -10,6 +10,8 @@
 
 This example illustrates how to create a simple regional GKE kubernetes cluster within GCP. The cluster is created on Intel 4th gen Xeon Scalable processor called Sapphire Rapids.
 
+Note - For Memory Optimized VMs, the GKE standard cluster (as of the date of this publication) only supports the M2 machine types which is based on Intel Xeon Cascade Lake.
+
 ## Usage 
 
 The simple usage is as follows: 
@@ -25,9 +27,10 @@ The simple usage is as follows:
 #                   n2-highmem-80, n2-highmem-96, n2-highmem-128
 # General Purpose:  n2-highcpu-2, n2-highcpu-4, n2-highcpu-8, n2-highcpu-16, n2-highcpu-32, n2-highcpu-48, n2-highcpu-64,
 #                   n2-highcpu-80, n2-highcpu-96
-# Compute Optimized: c3-highcpu-4, c3-highcpu-8,
-#                    c3-highcpu-22, c3-highcpu-44, c3-highcpu-88, c3-highcpu-176
-#Memory Optimized:   m3-ultramem-32, m3-ultramem-64, m3-ultramem-128, m3-megamem-64, m3-megamem-128
+# General Purpose:  c3-highcpu-4, c3-highcpu-8, c3-highcpu-22, c3-highcpu-44, c3-highcpu-88, c3-highcpu-176, c3-highmem-4, 
+#                   c3-highmem-8, c3-highmem-22, c3-highmem-44, c3-highmem-88, c3-highmem-176, c3-standard-4, c3-standard-8, 
+#                   c3-standard-22, c3-standard-44, c3-standard-88, c3-standard-176
+# Memory Optimized: m2-megamem-416, m2-hypermem-416, m2-ultramem-208, m2-ultramem-416
 
 locals {
   cluster_type = "simple-regional"
