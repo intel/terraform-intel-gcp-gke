@@ -19,15 +19,17 @@ locals {
 
   # Update the project id that is specific to your own GCP environment
   project_id = "your_own_gcp_project_id"
-
+  
   cluster_name_suffix = "-1"
   region              = "us-central1"
+  zones               = ["us-central1-a", "us-central1-b", "us-central1-c"]
   node_locations      = ["us-central1-a", "us-central1-b", "us-central1-c"]
   network             = "default"
   subnetwork          = "default"
 
   # Machine type is selected as Intel 4th gen Xeon Scalable processor called Sapphire Rapids
-  machine_type = "c3-highcpu-4"
+  machine_type = "c3-standard-4"
+  disk_type = "pd-ssd"
 
   #Auto scaling configurations, min_node_count is the minimum node count per zone, max_node_count is the max node count per zone
   min_node_count = 1
@@ -41,7 +43,6 @@ locals {
 
   # Update the compute engine service account below with your own compute engine service account
   compute_engine_service_account = "123456789012-compute@developer.gserviceaccount.com"
-
   enable_binary_authorization = false
   skip_provisioners           = false
 }
@@ -60,6 +61,7 @@ module "gke" {
   name       = "${local.cluster_type}-cluster${local.cluster_name_suffix}"
   regional   = true
   region     = local.region
+  zones      = local.zones
   network    = local.network
   subnetwork = local.subnetwork
 
@@ -71,7 +73,7 @@ module "gke" {
 
   enable_cost_allocation      = true
   enable_binary_authorization = local.enable_binary_authorization
-  skip_provisioners           = local.skip_provisioners
+  #skip_provisioners           = local.skip_provisioners
 
   remove_default_node_pool = true
 
@@ -83,6 +85,7 @@ module "gke" {
       machine_type   = local.machine_type
       min_node_count = local.min_node_count
       max_node_count = local.max_node_count
+      disk_type      = local.disk_type
     }
   ]
 }
