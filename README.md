@@ -4,7 +4,7 @@
 
 # Intel® Optimized Cloud Modules for Terraform
 
-© Copyright 2024, Intel Corporation
+© Copyright 2025, Intel Corporation
 
 ## GCP GKE Module
 
@@ -113,6 +113,9 @@ To provision this example, run the following from within this directory:
 - `terraform apply` to apply the infrastructure build
 - `terraform destroy` to destroy the built infrastructure
 
+
+## Links
+https://cloud.google.com/compute/docs/cpu-platforms
 
 ## Considerations  
 
